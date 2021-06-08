@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+  <style>
+    #section {
+      
+      padding : 75px 0;
+      border-bottom: 1px solid grey;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>{{comment[0]['title']}}</h1> 
+    <div>
+      <span>{{comment[0]['point']}} points</span>
+      <span>|</span>
+      <span>By: {{comment[0]['author']}}</span>
+      <span>|</span>
+      <a href="{{comment[0]['link']}}">{{comment[0]['link']}}</a>
+    </div>
+  </header>
+  <main>
+    {% for com in comment[1] %}
+    {% if com['name'] == None %}
+    <div id="section">
+      <p>
+        [deleted]
+      </p>
+    </div>
+    {% else %}
+    <div id="section">
+      <h4>
+        {{com['name']}}:
+      </h4>
+      {% autoescape false %}
+      {{com['comment']}}
+      {% endautoescape %}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </main>
+</body>
+
+
+</html>

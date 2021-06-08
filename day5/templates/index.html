@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet">
+    </link>
+    <style>
+        #section {
+
+            padding: 75px 0;
+            border-bottom: 1px solid grey;
+        }
+
+            {
+            % if click==2 %
+        }
+
+        .popular {
+            color: black;
+            font-weight: 600;
+        }
+
+            {
+            % endif %
+        }
+
+
+            {
+            % if click==1 %
+        }
+
+        .new {
+            color: black;
+            font-weight: 600;
+        }
+
+            {
+            % endif %
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Sonyak News</h1>
+        <div>
+            <span>Order by:</span>
+            <a href="/?order_by=popular" class="popular">Popular</a>
+            <span>|</span>
+            <a href="/?order_by=new" class="new">New</a>
+        </div>
+    </header>
+    <main>
+        {% for article in articles %}
+        <div id="section">
+            <div>
+                <a href="/{{article['ObjID']}}">{{article['title']}}</a>
+                <a href='{{article[' link']}}' target='_blank'>({{article['link']}})</a>
+            </div>
+            <div>
+                <span>{{article['point']}} points</span>
+                <span>|</span>
+                <span>By: {{article['author']}}</span>
+                <span>|</span>
+                <span>{{article['comment']}} comments</span>
+            </div>
+        </div>
+        {% endfor %}
+    </main>
+</body>
+
+</html>
